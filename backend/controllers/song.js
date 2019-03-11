@@ -11,9 +11,13 @@ router.post("/", (req, res) => {
   Song.create(req.body).then(konjo => res.redirect("/songs"));
 });
 
-router.put("/:title", (req, res) => {
+router.get("/:id", (req, res) => {
+  Song.findOne({ _id: req.params.id }).then(song => res.json(song));
+});
+
+router.put("/:id", (req, res) => {
   Song.findOne({
-    title: req.params.title
+    _id: req.params.id
   }).then(song => {
     song.title = req.body.title;
     song.author = req.body.author;
@@ -25,8 +29,8 @@ router.put("/:title", (req, res) => {
   });
 });
 
-router.delete("/:title", (req, res) => {
-  Song.findOneAndRemove({ title: req.params.title }).then(konjo =>
+router.delete("/:id", (req, res) => {
+  Song.findOneAndRemove({ _id: req.params.id }).then(konjo =>
     Song.find({}).then(song => res.json(song))
   );
 });
