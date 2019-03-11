@@ -19,9 +19,8 @@ router.put("/:title", (req, res) => {
     song.author = req.body.author;
     song.notes = req.body.notes;
     song.lyrics = req.body.lyrics;
-    song.save(err => {
-      if (err) return res.status(500).send(err);
-      res.redirect(`/songs/${song.title}`);
+    song.save((err, song) => {
+      res.json(song);
     });
   });
 });
