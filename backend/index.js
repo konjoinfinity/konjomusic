@@ -6,7 +6,12 @@ const methodOverride = require("method-override");
 
 app.use(cors());
 app.use(parser.urlencoded({ extended: true }));
+app.use(parser.json());
 app.use(methodOverride("_method"));
+
+const songController = require("./controllers/song");
+
+app.use("/songs", songController);
 
 app.set("port", process.env.PORT || 4000);
 
