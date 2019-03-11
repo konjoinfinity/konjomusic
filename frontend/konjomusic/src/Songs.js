@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom"
 
 class Songs extends Component {
     constructor(props) {
@@ -22,7 +23,12 @@ class Songs extends Component {
                 <h2>Author: {this.state.song && this.state.song.author}</h2>
                 <p>Notes: {this.state.song && this.state.song.notes}</p>
                 <p>Lyrics: {this.state.song && this.state.song.lyrics}</p>
+                <p>
+                    <Link to={`/songs/${this.props.match.params.id}/edit`}>Edit</Link>
+                    </p>
               </div> 
+
+
         );
     }
 }
