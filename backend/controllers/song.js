@@ -11,14 +11,23 @@ router.post("/", (req, res) => {
   Song.create(req.body).then(konjo => res.redirect("/songs"));
 });
 
-router.put("/:id", (req, res) => {
-  Song.findOneAndUpdate({ _id: req.params.id }, req.body).then(konjo =>
-    Song.find({}).then(song => res.json(song))
-  );
+router.put("/:title", (req, res) => {
+  Song.findOne({
+    title: req.params.title
+  }).then(song => {
+    song.title = req.body.title;
+    song.author = req.body.author;
+    song.notes = req.body.notes;
+    song.lyrics = req.body.lyrics;
+    song.save(err => {
+      if (err) return res.status(500).send(err);
+      res.redirect(`/songs/${song.title}`);
+    });
+  });
 });
 
-router.delete("/:id", (req, res) => {
-  Song.findOneAndRemove({ _id: req.params.id }).then(konjo =>
+router.delete("/:title", (req, res) => {
+  Song.findOneAndRemove({ title: req.params.title }).then(konjo =>
     Song.find({}).then(song => res.json(song))
   );
 });

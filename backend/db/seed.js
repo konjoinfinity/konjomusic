@@ -1,6 +1,6 @@
 const mongoose = require("./connection");
 const seeds = require("./seed.json");
-const Gif = require("../models/song");
+const Song = require("../models/song");
 
 mongoose.Promise = Promise;
 
