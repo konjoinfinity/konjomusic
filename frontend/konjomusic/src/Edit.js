@@ -3,12 +3,14 @@ import React, { Component } from 'react';
 class Edit extends Component {
     constructor(props) {
         super(props)
-        this.state = { song: null };
+        this.state = { 
+            title: null,
+            author: null,
+            notes: null,
+            lyrics: null };
 
-        this.evtTitle = this.evtTitle.bind(this);
-        this.evtAuthor = this.evtAuthor.bind(this);
-        this.evtNotes = this.evtNotes.bind(this);
-        this.evtLyrics = this.evtLyrics.bind(this);
+      this.handleInputChange = this.handleInputChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
         }
         componentDidMount() {
             fetch(`http://localhost:4000/songs/${this.props.match.params.id}`)
@@ -20,47 +22,59 @@ class Edit extends Component {
               });
             }
 
-        evtTitle(event) {
-            this.setState({title: event.target.value});
-        };
-        evtAuthor(event) {
-            this.setState({author: event.target.value});
-        };
-        evtNotes(event) {
-            this.setState({notes: event.target.value});
-        };
-        evtLyrics(event) {
-            this.setState({lyrics: event.target.value});
-        };
+            handleInputChange(event) {
+                const target = event.target;
+                const value = target.value;
+                const name = target.name;
+            
+                this.setState({
+                  [name]: value
+                });
+              }
     
-    sendEdit(){
-        console.log(this.state.song)
-    }
+              handleSubmit(event) {
+                event.preventDefault();
+                const data = this.state
+                fetch(`http://localhost:4000/songs/${this.props.match.params.id}`, {
+                  method: 'PUT',
+                  headers: {
+                      'Content-type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                  })
+                  .then((response) => response.json())
+                  .then((result) => {
+                    this.props.history.push('/songs')
+                    console.log(result) 
+                });
+                
+              }  
+    
     render() {
         return (
             <div>
-<div className="form">
         <h1>Edit Song</h1>
+        <form onSubmit={this.handleSubmit} action="/songs">
         <p>
-        <label>Title </label>
-        <input type="text" name="Title" placeholder={this.state.song && this.state.song.title} onChange={this.evtTitle}/>
-        </p>
-        <p>
-        <label>Author </label>
-        <input type="text" placeholder={this.state.song && this.state.song.author} onChange={this.evtAuthor}/>
-        </p>
-        <p>
-        <label>Notes </label>
-        <input type="text" placeholder={this.state.song && this.state.song.notes} onChange={this.evtNotes}/>
-        </p>
-        <p>
-        <label>Lyrics </label>
-        <textarea type="text" rows="8" cols="48" placeholder={this.state.song && this.state.song.lyrics} onChange={this.evtLyrics}/>
-        </p>
-        <p>
-        <input type="submit" value="Submit" onClick={this.sendEdit} />
-        </p>
-        </div>
+          <label>Title </label>
+          <input id="title" name="title" type="text" placeholder={this.state.song && this.state.song.title} onChange={this.handleInputChange}/>
+          </p>
+          <p>
+          <label>Author </label>
+          <input id="author" name="author" type="text" placeholder={this.state.song && this.state.song.author} onChange={this.handleInputChange}/>
+          </p>
+          <p>
+          <label>Notes </label>
+          <input id="notes" name="notes" type="text" placeholder={this.state.song && this.state.song.notes} onChange={this.handleInputChange}/>
+          </p>
+          <p>
+          <label>Lyrics </label>
+          <textarea type="text" rows="8" cols="48" placeholder={this.state.song && this.state.song.lyrics} onChange={this.handleInputChange}/>
+          </p>
+          <p>
+          <button>Edit Song</button>
+          </p>
+        </form>
             </div>
         );
     }

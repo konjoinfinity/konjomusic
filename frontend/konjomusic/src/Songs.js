@@ -5,6 +5,7 @@ class Songs extends Component {
     constructor(props) {
         super(props)
         this.state = { song: null };
+        
         this.deleteSong = this.deleteSong.bind(this);
         }
         componentDidMount() {

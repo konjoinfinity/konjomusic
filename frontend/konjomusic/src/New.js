@@ -43,6 +43,8 @@ class New extends Component {
   
     render() {
       return (
+        <div>
+        <h1>Create New Song</h1>
         <form onSubmit={this.handleSubmit} action="/songs">
         <p>
           <label>Title </label>
@@ -64,6 +66,7 @@ class New extends Component {
           <button>Create Song</button>
           </p>
         </form>
+        </div>
       );
     }
   }
