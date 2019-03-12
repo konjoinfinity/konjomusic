@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 class Songs extends Component {
     constructor(props) {
         super(props)
-        this.state = { song: "" };
+        this.state = { song: null };
         
         this.deleteSong = this.deleteSong.bind(this);
         }
@@ -31,10 +31,10 @@ class Songs extends Component {
     render() { 
         return (
                 <div className="song">
-                <h1>{this.state.song.title}</h1>
-                <h2>Author: {this.state.song.author}</h2>
-                <p>Notes: {this.state.song.notes}</p>
-                <p>Lyrics: {this.state.song.lyrics}</p>
+                <h1>{this.state.song && this.state.song.title}</h1>
+                <h2>Author: {this.state.song && this.state.song.author}</h2>
+                <p>Notes: {this.state.song && this.state.song.notes}</p>
+                <p>Lyrics: {this.state.song && this.state.song.lyrics}</p>
                 
                     <button><Link to={`/songs/${this.props.match.params.id}/edit`}>Edit</Link></button>
                     <form onSubmit={this.deleteSong}>

@@ -52,7 +52,7 @@ componentDidMount() {
         <Route path="/new" exact render={props => 
         <New {...props} getSongs={this.getSongs} /> }/>
         <Route path="/songs/:id" exact render={props => 
-        <Songs {...props} getSongs={this.getSongs} /> }/>
+        <Songs {...props} songs={this.state.songs} getSongs={this.getSongs} /> }/>
         <Route path="/songs/:id/edit" render={props => 
         <Edit {...props} getSongs={this.getSongs} /> }/>
         </Switch>
