@@ -5,6 +5,7 @@ class Songs extends Component {
     constructor(props) {
         super(props)
         this.state = { song: null };
+        this.deleteSong = this.deleteSong.bind(this);
         }
         componentDidMount() {
             fetch(`http://localhost:4000/songs/${this.props.match.params.id}`)
@@ -16,6 +17,15 @@ class Songs extends Component {
                 )
               });
             }
+            deleteSong(event){
+              event.preventDefault();
+              console.log(this.state.song._id)
+              fetch(`http://localhost:4000/songs/${this.state.song._id}`, {
+                method: 'DELETE'
+                })
+                .then(this.props.history.push('/songs'))
+            }
+
     render() { 
         return (
                 <div className="song">
@@ -23,9 +33,11 @@ class Songs extends Component {
                 <h2>Author: {this.state.song && this.state.song.author}</h2>
                 <p>Notes: {this.state.song && this.state.song.notes}</p>
                 <p>Lyrics: {this.state.song && this.state.song.lyrics}</p>
-                <p>
-                    <Link to={`/songs/${this.props.match.params.id}/edit`}>Edit</Link>
-                    </p>
+                
+                    <button><Link to={`/songs/${this.props.match.params.id}/edit`}>Edit</Link></button>
+                    <form onSubmit={this.deleteSong}>
+                    <button>Delete</button>
+                    </form>
               </div> 
 
 
