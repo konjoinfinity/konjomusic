@@ -5,6 +5,7 @@ import Home from "./Home"
 import About from "./About"
 import Songs from "./Songs"
 import Edit from "./Edit"
+import New from "./New"
 
 class App extends Component {
   render() {
@@ -18,11 +19,15 @@ class App extends Component {
           <Link to="/about">
           <h1>About</h1>
           </Link>
+          <Link to="/new">
+          <h1>New</h1>
+          </Link>
           </nav>
           <main>
           <Switch>
         <Route path="/songs" exact render={() => <Home />}/>
         <Route path="/about" render={() => <About />}/>
+        <Route path="/new" render={() => <New />}/>
         <Route path="/songs/:id" exact render={props => 
         <Songs {...props} /> }/>
         <Route path="/songs/:id/edit" render={props => 
