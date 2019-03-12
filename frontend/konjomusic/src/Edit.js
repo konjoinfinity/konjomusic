@@ -44,7 +44,7 @@ class Edit extends Component {
                   })
                   .then((response) => response.json())
                   .then((result) => {
-                    this.props.history.push('/songs')
+                    this.props.history.push(`/songs/${this.props.match.params.id}`)
                     console.log(result) 
                 });
                 
@@ -69,7 +69,7 @@ class Edit extends Component {
           </p>
           <p>
           <label>Lyrics </label>
-          <textarea type="text" rows="8" cols="48" placeholder={this.state.song && this.state.song.lyrics} onChange={this.handleInputChange}/>
+          <textarea id="lyrics" name="lyrics" type="text" rows="8" cols="48" placeholder={this.state.song && this.state.song.lyrics} onChange={this.handleInputChange}/>
           </p>
           <p>
           <button>Edit Song</button>
