@@ -4,6 +4,7 @@ import './App.css';
 import Home from "./Home"
 import About from "./About"
 import Songs from "./Songs"
+import Edit from "./Edit"
 
 class App extends Component {
   render() {
@@ -22,8 +23,10 @@ class App extends Component {
           <Switch>
         <Route path="/songs" exact render={() => <Home />}/>
         <Route path="/about" render={() => <About />}/>
-        <Route path="/songs/:id" render={props => 
+        <Route path="/songs/:id" exact render={props => 
         <Songs {...props} /> }/>
+        <Route path="/songs/:id/edit" render={props => 
+        <Edit {...props} /> }/>
         </Switch>
         </main>
       </div>
