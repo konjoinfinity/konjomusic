@@ -60,7 +60,7 @@ class New extends Component {
           </p>
           <p>
           <label>Lyrics </label>
-          <input id="lyrics" name="lyrics" type="text" onChange={this.handleInputChange}/>
+          <textarea id="lyrics" name="lyrics" type="text" rows="8" cols="48" onChange={this.handleInputChange}/>
           </p>
           <p>
           <button>Create Song</button>

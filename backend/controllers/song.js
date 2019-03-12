@@ -31,7 +31,7 @@ router.put("/:id", (req, res) => {
 
 router.delete("/:id", (req, res) => {
   Song.findOneAndRemove({ _id: req.params.id }).then(konjo =>
-    Song.find({}).then(song => res.json(song))
+    res.redirect("/songs")
   );
 });
 

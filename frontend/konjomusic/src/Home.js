@@ -5,18 +5,24 @@ class Home extends Component {
     constructor(props) {
         super(props)
         this.state = { songs: null };
+
+        this.getSongs = this.getSongs.bind(this);
         }
 
-    componentDidMount() {
-        fetch("http://localhost:4000/songs")
+        getSongs(){
+          fetch("http://localhost:4000/songs")
           .then(res => res.json())
           .then(res => {
             this.setState(
               {songs: res}
             )
           });
-    
         }
+
+    componentDidMount() {
+        this.getSongs();
+        }
+
     render() {
         let songs;
         this.state.songs && (

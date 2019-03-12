@@ -45,8 +45,9 @@ class Edit extends Component {
                   .then((response) => response.json())
                   .then((result) => {
                     this.props.history.push(`/songs/${this.props.match.params.id}`)
-                    console.log(result) 
-                });
+                    console.log(result)
+                    
+                })
                 
               }  
     
