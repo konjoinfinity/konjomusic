@@ -2,35 +2,18 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom"
 
 class Home extends Component {
-    constructor(props) {
-        super(props)
-        this.state = { songs: null };
 
-        this.getSongs = this.getSongs.bind(this);
-        }
-
-        getSongs(){
-          fetch("http://localhost:4000/songs")
-          .then(res => res.json())
-          .then(res => {
-            this.setState(
-              {songs: res}
-            )
-          });
-        }
-
-    componentDidMount() {
-        this.getSongs();
-        }
-
+  componentDidMount(){
+  console.log(this.props.songs)
+  }
     render() {
         let songs;
-        this.state.songs && (
-            songs = this.state.songs.map((song, id) => {
+        this.props.songs && (
+            songs = this.props.songs.map((song, id) => {
                 return (
                   <div className="song" key={id}>
                     <p>
-                    <Link to={"/songs/" + song._id}>{song.title}</Link>
+                    <Link to={"/songs/" + song._id}>{song.title} - {song.author}</Link>
                     </p>
     
                   </div>

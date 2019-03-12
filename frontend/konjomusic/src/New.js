@@ -4,10 +4,10 @@ class New extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        title: null,
-        author: null,
-        notes: null,
-        lyrics: null
+        title: "",
+        author: "",
+        notes: "",
+        lyrics: ""
       }
       this.handleSubmit = this.handleSubmit.bind(this);
       this.handleInputChange = this.handleInputChange.bind(this);
@@ -37,7 +37,7 @@ class New extends Component {
         .then((result) => {
           this.props.history.push('/songs')
           console.log(result) 
-      });
+      }).finally(() => this.props.getSongs())
       
     }  
   

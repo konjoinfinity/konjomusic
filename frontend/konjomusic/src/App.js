@@ -8,6 +8,27 @@ import Edit from "./Edit"
 import New from "./New"
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { songs: "" };
+
+    this.getSongs = this.getSongs.bind(this);
+    }
+
+  getSongs(){
+    fetch("http://localhost:4000/songs")
+    .then(res => res.json())
+    .then(res => {
+      this.setState(
+        {songs: res}
+      )
+    });
+  }
+
+componentDidMount() {
+  this.getSongs();
+  }
+
   render() {
     return (
       <div className="App">
@@ -25,14 +46,15 @@ class App extends Component {
           </nav>
           <main>
           <Switch>
-        <Route path="/songs" exact render={() => <Home />}/>
+        <Route path="/songs" exact render={props => 
+        <Home {...props} songs={this.state.songs} /> }/>
         <Route path="/about" render={() => <About />}/>
         <Route path="/new" exact render={props => 
-        <New {...props} /> }/>
+        <New {...props} getSongs={this.getSongs} /> }/>
         <Route path="/songs/:id" exact render={props => 
-        <Songs {...props} /> }/>
+        <Songs {...props} getSongs={this.getSongs} /> }/>
         <Route path="/songs/:id/edit" render={props => 
-        <Edit {...props} /> }/>
+        <Edit {...props} getSongs={this.getSongs} /> }/>
         </Switch>
         </main>
       </div>
