@@ -80,6 +80,7 @@ componentDidMount() {
       localStorage.token = response.data.token
       this.setState({ isLoggedIn: true })
       console.log("User has signed up")
+      this.props.history.push('/songs')
     })
     .catch(err => console.log(err))
   }
@@ -94,6 +95,7 @@ componentDidMount() {
       localStorage.token = response.data.token
       this.setState({isLoggedIn: true})
       console.log("User is logged in")
+      this.props.history.push('/songs')
     })
     .catch(err => console.log(err))
   }
