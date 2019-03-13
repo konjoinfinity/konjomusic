@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom"
+import axios from 'axios'
 
 class Songs extends Component {
     constructor(props) {
         super(props)
-        this.state = { song: null };
+        this.state = { 
+          song: null,
+          comment: null
+         };
         
         this.deleteSong = this.deleteSong.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleComment = this.handleComment.bind(this);
         }
         componentDidMount() {
             fetch(`http://localhost:4000/songs/${this.props.match.params.id}`)
@@ -28,9 +35,43 @@ class Songs extends Component {
                 .finally(() => this.props.getSongs())
             }
 
+            handleComment() {
+              fetch(`http://localhost:4000/songs/${this.props.match.params.id}`)
+                .then(res => res.json())
+                .then(res => {
+                  this.setState(
+                    {song: res}
+                  )
+                  this.props.history.push("/songs")
+                });
+              }
+
+            handleInputChange(event) {
+              const target = event.target;
+              const value = target.value;
+              const name = target.name;
+          
+              this.setState({
+                [name]: value
+              });
+            }
+  
+            handleSubmit(event) {
+              event.preventDefault();
+              axios.put(`http://localhost:4000/songs/${this.props.match.params.id}/comment`, {
+                comment: this.state.comment
+                })
+                .then((response) => console.log(response))
+                .then((result) => {
+                  console.log(result)   
+              }).finally(() => this.props.getSongs())
+              this.handleComment();
+            }  
+
     render() { 
         return (
           this.props.isLoggedIn === true &&
+          <div className="conatiner">
                 <div className="song card m-5">
                 <div className="card-body">
                 <h1>{this.state.song && this.state.song.title}</h1>
@@ -42,10 +83,32 @@ class Songs extends Component {
                     <form onSubmit={this.deleteSong}>
                     <button>Delete</button>
                     </form>
+                    </div> 
+              </div>
+              <div className="song card m-5">
+              <div className="card-body">
+                    <form onSubmit={this.handleSubmit} action="/songs">
+        <p>
+          <label>Comment </label>
+          <input id="comment" name="comment" type="text" onChange={this.handleInputChange}/>
+          </p>
+          <p>
+          <button>Create Comment</button>
+          </p>
+        </form>
               </div> 
               </div>
 
-
+ {this.state.song && this.state.song.comments.map((comment, id) => {
+   return(
+   <div className="song card m-5" key={id}>
+   <div className="card-body">
+<p>{comment.text}</p>
+</div> 
+</div>)
+ })}
+ 
+</div>
         );
     }
 }

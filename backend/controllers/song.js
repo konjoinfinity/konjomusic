@@ -35,4 +35,27 @@ router.delete("/:id", (req, res) => {
   );
 });
 
+router.put("/:id/comment", (req, res) => {
+  const createComment = {
+    text: req.body.comment
+  };
+  Song.findOneAndUpdate(
+    { _id: req.params.id },
+    { $push: { comments: createComment } }
+  ).then(song => {
+    song.save((err, song) => {
+      res.json(song);
+    });
+  });
+});
+// router.put("/:id/comment", (req, res) => {
+//
+//   Song.findOneAndUpdate(
+//     { _id: req.params.id },
+//     { $push: { comments: createComment } }
+//   ).then(song => {
+//     res.redirect(`/song/${song._id}`);
+//   });
+// });
+
 module.exports = router;
