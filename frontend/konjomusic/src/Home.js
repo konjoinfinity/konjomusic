@@ -4,15 +4,14 @@ import { Link } from "react-router-dom"
 class Home extends Component {
 
   componentDidMount(){
-  console.log(this.props.songs)
   }
     render() {
         let songs;
         this.props.songs && (
             songs = this.props.songs.map((song, id) => {
                 return (
-                  <div className="song" class="card" key={id}>
-                  <div class="card-body">
+                  <div className="song card" key={id}>
+                  <div className="card-body">
                     <p>
                     <Link to={"/songs/" + song._id}>{song.title} - {song.author}</Link>
                     </p>

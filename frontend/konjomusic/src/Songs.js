@@ -30,8 +30,8 @@ class Songs extends Component {
 
     render() { 
         return (
-                <div className="song" class="card">
-                <div class="card-body">
+                <div className="song card">
+                <div className="card-body">
                 <h1>{this.state.song && this.state.song.title}</h1>
                 <h2>Author: {this.state.song && this.state.song.author}</h2>
                 <p>Notes: {this.state.song && this.state.song.notes}</p>

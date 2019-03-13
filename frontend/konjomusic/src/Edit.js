@@ -51,8 +51,8 @@ class Edit extends Component {
     
     render() {
         return (
-            <div class="card">
-            <div class="card-body">
+            <div className="card">
+            <div className="card-body">
         <h1>Edit Song</h1>
         <form onSubmit={this.handleSubmit} action="/songs">
         <p>
