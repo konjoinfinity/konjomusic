@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Link, Switch } from "react-router-dom"
+import { withRouter } from "react-router";
 import axios from 'axios'
 import './App.css';
 import Home from "./Home"
@@ -60,6 +61,7 @@ componentDidMount() {
     })
     localStorage.clear()
     console.log("User has been logged out")
+    this.props.history.push('/login')
   }
 
   handleInput (e) {
@@ -167,4 +169,5 @@ componentDidMount() {
   }
 }
 
-export default App;
+
+export default withRouter(App)
