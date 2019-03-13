@@ -24,7 +24,7 @@ nav img {
   vertical-align: middle;
 }
 
-nav h1 {
+nav h2 {
   margin: 0;
   display: inline-block;
   vertical-align: middle;
@@ -36,10 +36,6 @@ nav a {
   padding: 20px;
   font-size: 1.2em;
   text-decoration: none;
-}
-
-nav a:hover {
-  background: #FCAAB5;
 }
 
 main {

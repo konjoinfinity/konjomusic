@@ -35,16 +35,16 @@ componentDidMount() {
         <nav>
           <img src="https://konjoinfinity.github.io/img/logo.png" alt="Konjo"/>
             <Link to="/songs">
-          <h1>Home</h1>
+          <h2>Home</h2>
           </Link>
           <Link to="/about">
-          <h1>About</h1>
+          <h2>About</h2>
           </Link>
           <Link to="/new">
-          <h1>New</h1>
+          <h2>New</h2>
           </Link>
           </nav>
-          <main>
+          <main  class="container">
           <Switch>
         <Route path="/songs" exact render={props => 
         <Home {...props} songs={this.state.songs} /> }/>
