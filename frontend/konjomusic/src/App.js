@@ -132,13 +132,13 @@ componentDidMount() {
           <Switch>
         <Route path="/songs" exact render={props => 
         <Home {...props} songs={this.state.songs} isLoggedIn={this.state.isLoggedIn}/> }/>
-        <Route path="/about" render={() => <About />}/>
+        <Route path="/about" render={() => <About isLoggedIn={this.state.isLoggedIn} />}/>
         <Route path="/new" exact render={props => 
-        <New {...props} getSongs={this.getSongs} /> }/>
+        <New {...props} getSongs={this.getSongs} isLoggedIn={this.state.isLoggedIn}/> }/>
         <Route path="/songs/:id" exact render={props => 
-        <Songs {...props} songs={this.state.songs} getSongs={this.getSongs} /> }/>
+        <Songs {...props} songs={this.state.songs} getSongs={this.getSongs} isLoggedIn={this.state.isLoggedIn}/> }/>
         <Route path="/songs/:id/edit" render={props => 
-        <Edit {...props} getSongs={this.getSongs} /> }/>
+        <Edit {...props} getSongs={this.getSongs} isLoggedIn={this.state.isLoggedIn}/> }/>
         <Route path='/signup'
               render={(props) => {
                 return (

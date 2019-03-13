@@ -51,6 +51,7 @@ class Edit extends Component {
     
     render() {
         return (
+          this.props.isLoggedIn === true &&
             <div className="card">
             <div className="card-body">
         <h1>Edit Song</h1>

@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 class LogInForm extends Component {
   render () {
     return (
+      this.props.isLoggedIn === false &&
       <div className="card">
       <div className="card-body">
         <h2>Log In</h2>

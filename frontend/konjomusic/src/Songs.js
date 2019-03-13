@@ -30,6 +30,7 @@ class Songs extends Component {
 
     render() { 
         return (
+          this.props.isLoggedIn === true &&
                 <div className="song card">
                 <div className="card-body">
                 <h1>{this.state.song && this.state.song.title}</h1>

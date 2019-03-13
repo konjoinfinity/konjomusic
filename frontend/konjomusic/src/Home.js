@@ -22,6 +22,7 @@ class Home extends Component {
         )
         
         return (
+          this.props.isLoggedIn === true &&
             <div>
                 <h1>Songs</h1>
                 {songs}

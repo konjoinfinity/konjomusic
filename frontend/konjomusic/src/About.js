@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 class About extends Component {
     render() {
         return (
+            this.props.isLoggedIn === true &&
             <div className="card">
             <div className="card-body">
                 <h1>Konjo Music</h1>
