@@ -44,7 +44,7 @@ class New extends Component {
     render() {
       return (
         this.props.isLoggedIn === true &&
-        <div className="card">
+        <div className="card m-5">
         <div className="card-body">
         <h1>Create New Song</h1>
         <form onSubmit={this.handleSubmit} action="/songs">

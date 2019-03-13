@@ -10,7 +10,7 @@ class Home extends Component {
         this.props.songs && (
             songs = this.props.songs.map((song, id) => {
                 return (
-                  <div className="song card" key={id}>
+                  <div className="song card mt-3" key={id}>
                   <div className="card-body">
                     <p>
                     <Link to={"/songs/" + song._id}>{song.title} - {song.author}</Link>
