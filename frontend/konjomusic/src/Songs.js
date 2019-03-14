@@ -42,7 +42,6 @@ class Songs extends Component {
                   this.setState(
                     {song: res}
                   )
-                  this.props.history.push("/songs")
                 });
               }
 
@@ -57,15 +56,17 @@ class Songs extends Component {
             }
   
             handleSubmit(event) {
-              event.preventDefault();
+              console.log(event)
               axios.put(`http://localhost:4000/songs/${this.props.match.params.id}/comment`, {
                 comment: this.state.comment
                 })
                 .then((response) => console.log(response))
                 .then((result) => {
                   console.log(result)   
-              }).finally(() => this.props.getSongs())
-              this.handleComment();
+              })
+                this.componentDidMount()
+                this.props.history.push(`/songs/${this.state.song._id}/`)
+
             }  
 
     render() { 
@@ -87,9 +88,8 @@ class Songs extends Component {
               </div>
               <div className="song card m-5">
               <div className="card-body">
-                    <form onSubmit={this.handleSubmit} action="/songs">
+                    <form onSubmit={this.handleSubmit}>
         <p>
-          <label>Comment </label>
           <input id="comment" name="comment" type="text" onChange={this.handleInputChange}/>
           </p>
           <p>

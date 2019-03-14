@@ -48,14 +48,5 @@ router.put("/:id/comment", (req, res) => {
     });
   });
 });
-// router.put("/:id/comment", (req, res) => {
-//
-//   Song.findOneAndUpdate(
-//     { _id: req.params.id },
-//     { $push: { comments: createComment } }
-//   ).then(song => {
-//     res.redirect(`/song/${song._id}`);
-//   });
-// });
 
 module.exports = router;
