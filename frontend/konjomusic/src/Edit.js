@@ -57,23 +57,27 @@ class Edit extends Component {
         <h1>Edit Song</h1>
         <form onSubmit={this.handleSubmit} action="/songs">
         <p>
-          <label>Title </label>
+          Title </p>
+          <p>
           <input id="title" name="title" type="text" placeholder={this.state.song && this.state.song.title} onChange={this.handleInputChange}/>
           </p>
           <p>
-          <label>Author </label>
+          Author </p>
+          <p>
           <input id="author" name="author" type="text" placeholder={this.state.song && this.state.song.author} onChange={this.handleInputChange}/>
           </p>
           <p>
-          <label>Notes </label>
+          Notes </p>
+          <p>
           <input id="notes" name="notes" type="text" placeholder={this.state.song && this.state.song.notes} onChange={this.handleInputChange}/>
           </p>
           <p>
-          <label>Lyrics </label>
+          Lyrics </p>
+          <p>
           <textarea id="lyrics" name="lyrics" type="text" rows="8" cols="48" placeholder={this.state.song && this.state.song.lyrics} onChange={this.handleInputChange}/>
           </p>
           <p>
-          <button>Edit Song</button>
+          <button class="btn btn-primary">Edit Song</button>
           </p>
         </form>
             </div>

@@ -49,11 +49,11 @@ router.put("/:id/comment", (req, res) => {
   });
 });
 
-router.delete("/:id/delete", (req, res) => {
-  // console.log(req.body);
+router.put("/:id/delete", (req, res) => {
+  const deleteComment = { _id: req.body.body._id };
   Song.findOneAndUpdate(
     { _id: req.params.id },
-    { $pull: { comments: {} } }
+    { $pull: { comments: deleteComment } }
   ).then(song => {
     song.save((err, song) => {
       res.json(song);

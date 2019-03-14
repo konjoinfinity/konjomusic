@@ -38,8 +38,10 @@ class Songs extends Component {
 
             deleteComment(event){
               console.log(event)
-              console.log(this.state.song.comments)
-              axios.delete(`http://localhost:4000/songs/${this.state.song._id}/delete`)
+              console.log(this.state.song)
+              axios.put(`http://localhost:4000/songs/${this.state.song._id}/delete`, {
+                body: this.state.song.comments[0]
+              })
               this.componentDidMount()
               this.props.history.push(`/songs/${this.state.song._id}/`)
             }
@@ -88,11 +90,14 @@ class Songs extends Component {
                 <h2>Author: {this.state.song && this.state.song.author}</h2>
                 <p>Notes: {this.state.song && this.state.song.notes}</p>
                 <p>Lyrics: {this.state.song && this.state.song.lyrics}</p>
-                
-                    <button><Link to={`/songs/${this.props.match.params.id}/edit`}>Edit</Link></button>
+                    <p>
+                      <Link to={`/songs/${this.props.match.params.id}/edit`}><button class="btn btn-primary">Edit</button></Link>
+                      </p>
+                      <p>
                     <form onSubmit={this.deleteSong}>
-                    <button>Delete</button>
+                    <button class="btn btn-danger">Delete</button>
                     </form>
+                    </p>
                     </div> 
               </div>
               <div className="song card m-5">
@@ -102,7 +107,7 @@ class Songs extends Component {
           <input id="comment" name="comment" type="text" onChange={this.handleInputChange}/>
           </p>
           <p>
-          <button>Create Comment</button>
+          <button class="btn btn-primary">Comment</button>
           </p>
         </form>
               </div> 
@@ -113,9 +118,9 @@ class Songs extends Component {
    <div className="song card m-5" key={id}>
    <div className="card-body">
       <p>{comment.text}</p>
-      <p>{comment._id}</p>
+      <p hidden>{comment._id}</p>
   <form onSubmit={this.deleteComment}>
-      <button>Delete</button>
+      <button class="btn btn-danger">Delete</button>
             </form>
 </div> 
 </div>)

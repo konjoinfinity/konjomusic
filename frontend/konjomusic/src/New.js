@@ -25,7 +25,7 @@ class New extends Component {
 
     handleSubmit(event) {
       const data = this.state
-      event.preventDefault();
+      console.log(event)
       fetch('http://localhost:4000/songs', {
         method: 'POST',
         headers: {
@@ -49,23 +49,27 @@ class New extends Component {
         <h1>Create New Song</h1>
         <form onSubmit={this.handleSubmit} action="/songs">
         <p>
-          <label>Title </label>
+          Title </p>
+          <p>
           <input id="title" name="title" type="text" onChange={this.handleInputChange}/>
           </p>
           <p>
-          <label>Author </label>
+          Author </p>
+          <p>
           <input id="author" name="author" type="text" onChange={this.handleInputChange}/>
           </p>
           <p>
-          <label>Notes </label>
+          Notes </p>
+          <p>
           <input id="notes" name="notes" type="text" onChange={this.handleInputChange}/>
           </p>
           <p>
-          <label>Lyrics </label>
+          Lyrics </p>
+          <p>
           <textarea id="lyrics" name="lyrics" type="text" rows="8" cols="48" onChange={this.handleInputChange}/>
           </p>
           <p>
-          <button>Create Song</button>
+          <button class="btn btn-success">Create Song</button>
           </p>
         </form>
         </div>

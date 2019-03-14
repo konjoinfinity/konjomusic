@@ -10,15 +10,19 @@ class SignUpForm extends Component {
 
         <form>
           <div>
-            <label htmlFor='email'>Email</label>
+            <p>Email</p>
+            <p>
             <input type='text' name='email' onChange={this.props.handleInput} />
+            </p>
           </div>
 
           <div>
-            <label htmlFor='password'>Password</label>
+            <p>Password</p>
+            <p>
             <input type='password' name='password' onChange={this.props.handleInput} />
+            </p>
           </div>
-          <input value='Submit' type='submit' onClick={this.props.handleSignUp} />
+          <button class="btn btn-success" type='submit' onClick={this.props.handleSignUp}>Sign Up</button>
         </form>
       </div>
       </div>

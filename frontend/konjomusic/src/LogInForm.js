@@ -10,14 +10,18 @@ class LogInForm extends Component {
 
         <form>
           <div>
-            <label htmlFor='email'>Email</label>
+            <p>Email</p>
+            <p>
             <input type='text' name='email' onChange={this.props.handleInput} />
+            </p>
           </div>
           <div>
-            <label htmlFor='password'>Password</label>
+            <p>Password</p>
+            <p>
             <input type='password' name='password' onChange={this.props.handleInput} />
+            </p>
           </div>
-          <input value='Submit' type='submit' onClick={this.props.handleLogIn} />
+          <button class="btn btn-primary" type='submit' onClick={this.props.handleLogIn}>Log In</button>
         </form>
       </div>
       </div>

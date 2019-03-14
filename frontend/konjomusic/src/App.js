@@ -108,7 +108,7 @@ componentDidMount() {
           <img src="https://konjoinfinity.github.io/img/logo.png" alt="Konjo"/>
             
           {this.state.isLoggedIn === true &&
-            <Link to="/songs">
+          <Link to="/songs">
           <h2>Home</h2> 
           </Link>}
           {this.state.isLoggedIn === true &&
