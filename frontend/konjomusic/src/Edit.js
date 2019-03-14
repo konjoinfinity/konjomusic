@@ -77,7 +77,7 @@ class Edit extends Component {
           <textarea id="lyrics" name="lyrics" type="text" rows="8" cols="48" placeholder={this.state.song && this.state.song.lyrics} onChange={this.handleInputChange}/>
           </p>
           <p>
-          <button class="btn btn-primary">Edit Song</button>
+          <button className="btn btn-primary">Edit Song</button>
           </p>
         </form>
             </div>

@@ -22,7 +22,7 @@ class SignUpForm extends Component {
             <input type='password' name='password' onChange={this.props.handleInput} />
             </p>
           </div>
-          <button class="btn btn-success" type='submit' onClick={this.props.handleSignUp}>Sign Up</button>
+          <button className="btn btn-success" type='submit' onClick={this.props.handleSignUp}>Sign Up</button>
         </form>
       </div>
       </div>

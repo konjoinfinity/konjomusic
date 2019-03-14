@@ -7,7 +7,7 @@ class LogOut extends Component {
         <div className="card m-5">
         <div className="card-body">
         <form>
-          <button class="btn btn-warning" type='submit' onClick={this.props.handleLogOut}><h2>Log Out</h2></button>
+          <button className="btn btn-warning" type='submit' onClick={this.props.handleLogOut}><h2>Log Out</h2></button>
         </form>
       </div>
       </div>

@@ -69,7 +69,7 @@ class New extends Component {
           <textarea id="lyrics" name="lyrics" type="text" rows="8" cols="48" onChange={this.handleInputChange}/>
           </p>
           <p>
-          <button class="btn btn-success">Create Song</button>
+          <button className="btn btn-success">Create Song</button>
           </p>
         </form>
         </div>

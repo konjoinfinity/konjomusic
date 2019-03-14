@@ -21,7 +21,7 @@ class LogInForm extends Component {
             <input type='password' name='password' onChange={this.props.handleInput} />
             </p>
           </div>
-          <button class="btn btn-primary" type='submit' onClick={this.props.handleLogIn}>Log In</button>
+          <button className="btn btn-primary" type='submit' onClick={this.props.handleLogIn}>Log In</button>
         </form>
       </div>
       </div>

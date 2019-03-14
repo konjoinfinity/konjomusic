@@ -50,7 +50,7 @@ router.put("/:id/comment", (req, res) => {
 });
 
 router.put("/:id/delete", (req, res) => {
-  const deleteComment = { _id: req.body.body._id };
+  const deleteComment = { _id: req.body.body };
   Song.findOneAndUpdate(
     { _id: req.params.id },
     { $pull: { comments: deleteComment } }

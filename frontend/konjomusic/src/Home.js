@@ -13,7 +13,7 @@ class Home extends Component {
                   <div className="song card mt-3" key={id}>
                   <div className="card-body">
                     <p>
-                    <Link to={"/songs/" + song._id}><button class="btn btn-success">{song.title} - {song.author}</button></Link>
+                    <Link to={"/songs/" + song._id}><button className="btn btn-success">{song.title} - {song.author}</button></Link>
                     </p>
                     </div>
                   </div>
