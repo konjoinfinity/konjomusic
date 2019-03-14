@@ -48,9 +48,12 @@ class Songs extends Component {
   deleteComment(event) {
     axios.put(`http://localhost:4000/songs/${this.state.song._id}/delete`,{
       body: event.target.dataset.id
+    }).then((response) => console.log(response))
+    .then((result) => {
+      console.log(result)
     })
-    this.handleComment()
-    this.props.history.push(`/songs/${this.state.song._id}`)
+    this.componentDidMount()
+    this.props.history.push(`/songs/${this.props.match.params.id}/`)
   }
 
   handleInputChange(event) {
@@ -113,7 +116,6 @@ class Songs extends Component {
             <div className="song card m-5" key={id}>
               <div className="card-body">
                 <p>{comment.text}</p>
-                <p hidden>{comment._id}</p>
                 <button data-id={comment._id} className="btn btn-danger" onClick={this.deleteComment}>Delete</button>
               </div>
             </div>)
