@@ -134,6 +134,8 @@ componentDidMount() {
           </nav>
           <main  className="container">
           <Switch>
+          <Route path="/" exact render={props => 
+        <Home {...props} songs={this.state.songs} isLoggedIn={this.state.isLoggedIn}/> }/>
         <Route path="/songs" exact render={props => 
         <Home {...props} songs={this.state.songs} isLoggedIn={this.state.isLoggedIn}/> }/>
         <Route path="/about" render={() => <About isLoggedIn={this.state.isLoggedIn} />}/>

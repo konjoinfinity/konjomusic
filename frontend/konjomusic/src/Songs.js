@@ -9,7 +9,7 @@ class Songs extends Component {
           song: null,
           comment: null
          };
-        
+         this.deleteComment = this.deleteComment.bind(this);
         this.deleteSong = this.deleteSong.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,6 +25,7 @@ class Songs extends Component {
                 )
               });
             }
+
             deleteSong(event){
               event.preventDefault();
               console.log(this.state.song._id)
@@ -33,6 +34,14 @@ class Songs extends Component {
                 })
                 .then(this.props.history.push('/songs'))
                 .finally(() => this.props.getSongs())
+            }
+
+            deleteComment(event){
+              console.log(event)
+              console.log(this.state.song.comments)
+              axios.delete(`http://localhost:4000/songs/${this.state.song._id}/delete`)
+              this.componentDidMount()
+              this.props.history.push(`/songs/${this.state.song._id}/`)
             }
 
             handleComment() {
@@ -103,7 +112,11 @@ class Songs extends Component {
    return(
    <div className="song card m-5" key={id}>
    <div className="card-body">
-<p>{comment.text}</p>
+      <p>{comment.text}</p>
+      <p>{comment._id}</p>
+  <form onSubmit={this.deleteComment}>
+      <button>Delete</button>
+            </form>
 </div> 
 </div>)
  })}
