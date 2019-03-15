@@ -116,7 +116,9 @@ class Songs extends Component {
             <div className="song card m-5" key={id}>
               <div className="card-body">
                 <p>{comment.text}</p>
-                <button data-id={comment._id} className="btn btn-danger" onClick={this.deleteComment}>Delete</button>
+                <form data-id={comment._id} onSubmit={this.deleteComment}>
+                <button className="btn btn-danger">Delete</button>
+                </form>
               </div>
             </div>)
         })}
