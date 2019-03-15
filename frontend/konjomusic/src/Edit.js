@@ -13,7 +13,7 @@ class Edit extends Component {
       this.handleSubmit = this.handleSubmit.bind(this);
         }
         componentDidMount() {
-            fetch(`http://localhost:4000/songs/${this.props.match.params.id}`)
+            fetch(`http://konjomusicbackend.herokuapp.com/songs/${this.props.match.params.id}`)
               .then(res => res.json())
               .then(res => {
                 this.setState(
@@ -35,7 +35,7 @@ class Edit extends Component {
               handleSubmit(event) {
                 event.preventDefault();
                 const data = this.state
-                fetch(`http://localhost:4000/songs/${this.props.match.params.id}`, {
+                fetch(`http://konjomusicbackend.herokuapp.com/songs/${this.props.match.params.id}`, {
                   method: 'PUT',
                   headers: {
                       'Content-type': 'application/json'

@@ -30,7 +30,7 @@ class App extends Component {
     }
 
   getSongs(){
-    fetch("http://localhost:4000/songs")
+    fetch("http://konjomusicbackend.herokuapp.com/songs")
     .then(res => res.json())
     .then(res => {
       this.setState(
@@ -72,7 +72,7 @@ componentDidMount() {
 
   handleSignUp (e) {
     e.preventDefault()
-    axios.post('http://localhost:4000/users/signup', {
+    axios.post('http://konjomusicbackend.herokuapp.com/users/signup', {
       email: this.state.email,
       password: this.state.password
     })
@@ -87,7 +87,7 @@ componentDidMount() {
 
   handleLogIn (e) {
     e.preventDefault()
-    axios.post('http://localhost:4000/users/login', {
+    axios.post('http://konjomusicbackend.herokuapp.com/users/login', {
       email: this.state.email,
       password: this.state.password
     })

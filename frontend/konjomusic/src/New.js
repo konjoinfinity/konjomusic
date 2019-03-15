@@ -26,7 +26,7 @@ class New extends Component {
     handleSubmit(event) {
       const data = this.state
       console.log(event)
-      fetch('http://localhost:4000/songs', {
+      fetch('http://konjomusicbackend.herokuapp.com/songs', {
         method: 'POST',
         headers: {
             'Content-type': 'application/json'
