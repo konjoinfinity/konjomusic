@@ -9,6 +9,7 @@ class Songs extends Component {
       song: null,
       comment: null
     };
+    this.deleteAllComments = this.deleteAllComments.bind(this);
     this.deleteComment = this.deleteComment.bind(this);
     this.deleteSong = this.deleteSong.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
