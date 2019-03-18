@@ -73,17 +73,11 @@ class Songs extends Component {
 
   deleteAllComments(event) {
     event.preventDefault();
-    console.log(event);
-    axios
-      .delete(
-        `http://konjomusicbackend.herokuapp.com/songs/${
-          this.state.song._id
-        }/comdel`
-      )
-      .then(response => console.log(response))
-      .then(result => {
-        console.log(result);
-      });
+    axios.delete(
+      `http://konjomusicbackend.herokuapp.com/songs/${
+        this.state.song._id
+      }/comment/delete`
+    );
     this.componentDidMount();
     this.props.history.push(`/songs/${this.state.song._id}/`);
   }
@@ -153,9 +147,6 @@ class Songs extends Component {
                   <button className="btn btn-primary">Comment</button>
                 </p>
               </form>
-              <form onSubmit={this.deleteAllComments}>
-                <button className="btn btn-danger">Delete All Comments</button>
-              </form>
             </div>
           </div>
 
@@ -167,6 +158,11 @@ class Songs extends Component {
                     <p>{comment.text}</p>
                     <form data-id={comment._id} onSubmit={this.deleteComment}>
                       <button className="btn btn-danger">Delete</button>
+                    </form>
+                    <form onSubmit={this.deleteAllComments}>
+                      <button className="btn btn-danger">
+                        Delete All Comments
+                      </button>
                     </form>
                   </div>
                 </div>
