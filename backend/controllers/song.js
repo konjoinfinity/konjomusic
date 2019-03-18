@@ -61,4 +61,16 @@ router.put("/:id/delete", (req, res) => {
   });
 });
 
+router.delete("/:id/deletecomments", (req, res) => {
+  // console.log(req.body);
+  Song.findOneAndUpdate(
+    { _id: req.params.id },
+    { $pull: { comments: {} } }
+  ).then(song => {
+    song.save((err, song) => {
+      res.json(song);
+    });
+  });
+});
+
 module.exports = router;
