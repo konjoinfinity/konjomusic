@@ -71,6 +71,7 @@ class Songs extends Component {
   }
 
   deleteAllComments(event) {
+    event.preventDefault();
     console.log(event);
     console.log(this.state.song.comments);
     axios.delete(
