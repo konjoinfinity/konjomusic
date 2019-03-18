@@ -73,12 +73,16 @@ class Songs extends Component {
   deleteAllComments(event) {
     event.preventDefault();
     console.log(event);
-    console.log(this.state.song.comments);
-    axios.delete(
-      `http://konjomusicbackend.herokuapp.com/songs/${
-        this.state.song._id
-      }/deletecomments`
-    );
+    axios
+      .delete(
+        `http://konjomusicbackend.herokuapp.com/songs/${
+          this.state.song._id
+        }/comdel`
+      )
+      .then(response => console.log(response))
+      .then(result => {
+        console.log(result);
+      });
     this.componentDidMount();
     this.props.history.push(`/songs/${this.state.song._id}/`);
   }

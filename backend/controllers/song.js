@@ -61,7 +61,7 @@ router.put("/:id/delete", (req, res) => {
   });
 });
 
-router.delete("/:id/deletecomments", (req, res) => {
+router.delete("/:id/comdel", (req, res) => {
   // console.log(req.body);
   Song.findOneAndUpdate(
     { _id: req.params.id },
