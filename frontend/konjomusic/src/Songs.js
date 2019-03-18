@@ -76,7 +76,7 @@ class Songs extends Component {
     axios.delete(
       `http://konjomusicbackend.herokuapp.com/songs/${
         this.state.song._id
-      }/comment/delete`
+      }/clean`
     );
     this.componentDidMount();
     this.props.history.push(`/songs/${this.state.song._id}/`);
