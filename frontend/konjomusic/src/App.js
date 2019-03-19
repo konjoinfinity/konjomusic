@@ -108,32 +108,32 @@ class App extends Component {
 
           {this.state.isLoggedIn === true && (
             <Link to="/songs">
-              <h2>Home</h2>
+              <h4>Home</h4>
             </Link>
           )}
           {this.state.isLoggedIn === true && (
             <Link to="/about">
-              <h2>About</h2>
+              <h4>About</h4>
             </Link>
           )}
           {this.state.isLoggedIn === true && (
             <Link to="/new">
-              <h2>New</h2>
+              <h4>New</h4>
             </Link>
           )}
           {this.state.isLoggedIn === false && (
             <Link to="/login">
-              <h2>Login</h2>
+              <h4>Login</h4>
             </Link>
           )}
           {this.state.isLoggedIn === false && (
             <Link to="/signup">
-              <h2>Sign Up</h2>
+              <h4>Sign Up</h4>
             </Link>
           )}
           {this.state.isLoggedIn === true && (
             <Link to="/logout">
-              <h2>Logout</h2>
+              <h4>Logout</h4>
             </Link>
           )}
         </nav>
