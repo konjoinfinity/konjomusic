@@ -10,6 +10,7 @@ class Songs extends Component {
       comment: null
     };
 
+    this.test = this.test.bind(this);
     this.popTopComment = this.popTopComment.bind(this);
     this.popBottomComment = this.popBottomComment.bind(this);
     this.deleteAllComments = this.deleteAllComments.bind(this);
@@ -96,12 +97,10 @@ class Songs extends Component {
     this.props.history.push(`/songs/${this.state.song._id}/`);
   }
 
-  popBottomComment(event) {
+  test(event) {
     event.preventDefault();
     axios.delete(
-      `http://konjomusicbackend.herokuapp.com/songs/${
-        this.state.song._id
-      }/popbottom`
+      `http://konjomusicbackend.herokuapp.com/songs/${this.state.song._id}/test`
     );
     this.componentDidMount();
     this.props.history.push(`/songs/${this.state.song._id}/`);
@@ -170,6 +169,11 @@ class Songs extends Component {
                 </p>
                 <p>
                   <button className="btn btn-primary">Comment</button>
+                </p>
+              </form>
+              <form onSubmit={this.test}>
+                <p>
+                  <button className="btn btn-dark">Test</button>
                 </p>
               </form>
             </div>
