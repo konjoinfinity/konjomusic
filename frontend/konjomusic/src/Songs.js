@@ -9,6 +9,9 @@ class Songs extends Component {
       song: null,
       comment: null
     };
+
+    this.popTopComment = this.popTopComment.bind(this);
+    this.popBottomComment = this.popBottomComment.bind(this);
     this.deleteAllComments = this.deleteAllComments.bind(this);
     this.deleteComment = this.deleteComment.bind(this);
     this.deleteSong = this.deleteSong.bind(this);
@@ -77,6 +80,28 @@ class Songs extends Component {
       `http://konjomusicbackend.herokuapp.com/songs/${
         this.state.song._id
       }/clean`
+    );
+    this.componentDidMount();
+    this.props.history.push(`/songs/${this.state.song._id}/`);
+  }
+
+  popTopComment(event) {
+    event.preventDefault();
+    axios.delete(
+      `http://konjomusicbackend.herokuapp.com/songs/${
+        this.state.song._id
+      }/poptop`
+    );
+    this.componentDidMount();
+    this.props.history.push(`/songs/${this.state.song._id}/`);
+  }
+
+  popBottomComment(event) {
+    event.preventDefault();
+    axios.delete(
+      `http://konjomusicbackend.herokuapp.com/songs/${
+        this.state.song._id
+      }/popbottom`
     );
     this.componentDidMount();
     this.props.history.push(`/songs/${this.state.song._id}/`);
@@ -157,12 +182,30 @@ class Songs extends Component {
                   <div className="card-body">
                     <p>{comment.text}</p>
                     <form data-id={comment._id} onSubmit={this.deleteComment}>
-                      <button className="btn btn-danger">Delete</button>
+                      <p>
+                        <button className="btn btn-warning">Delete</button>
+                      </p>
                     </form>
                     <form onSubmit={this.deleteAllComments}>
-                      <button className="btn btn-danger">
-                        Delete All Comments
-                      </button>
+                      <p>
+                        <button className="btn btn-danger">
+                          Delete All Comments
+                        </button>
+                      </p>
+                    </form>
+                    <form onSubmit={this.popTopComment}>
+                      <p>
+                        <button className="btn btn-info">
+                          Pop Top Comment
+                        </button>
+                      </p>
+                    </form>
+                    <form onSubmit={this.popBottomComment}>
+                      <p>
+                        <button className="btn btn-dark">
+                          Pop Bottom Comment
+                        </button>
+                      </p>
                     </form>
                   </div>
                 </div>
