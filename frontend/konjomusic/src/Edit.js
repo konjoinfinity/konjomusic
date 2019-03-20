@@ -102,10 +102,9 @@ class Edit extends Component {
                   name="lyrics"
                   type="text"
                   rows="10"
+                  placeholder={this.state.song && this.state.song.lyrics}
                   onChange={this.handleInputChange}
-                >
-                  {this.state.song && this.state.song.lyrics}{" "}
-                </textarea>
+                />
               </p>
               <p>
                 <button className="btn btn-primary">Edit Song</button>
