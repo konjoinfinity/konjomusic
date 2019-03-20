@@ -101,11 +101,11 @@ class Edit extends Component {
                   id="lyrics"
                   name="lyrics"
                   type="text"
-                  rows="8"
-                  cols="48"
-                  defaultValue={this.state.song && this.state.song.lyrics}
+                  rows="10"
                   onChange={this.handleInputChange}
-                />
+                >
+                  {this.state.song && this.state.song.lyrics}{" "}
+                </textarea>
               </p>
               <p>
                 <button className="btn btn-primary">Edit Song</button>
