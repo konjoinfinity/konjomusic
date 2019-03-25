@@ -56,7 +56,7 @@ class Songs extends Component {
   }
 
   deleteComment(event) {
-    console.log(event);
+    event.preventDefault();
     axios
       .put(
         `http://konjomusicbackend.herokuapp.com/songs/${
@@ -75,7 +75,7 @@ class Songs extends Component {
   }
 
   deleteAllComments(event) {
-    console.log(event);
+    event.preventDefault();
     axios.delete(
       `http://konjomusicbackend.herokuapp.com/songs/${
         this.state.song._id
@@ -86,7 +86,7 @@ class Songs extends Component {
   }
 
   popTopComment(event) {
-    console.log(event);
+    event.preventDefault();
     axios.delete(
       `http://konjomusicbackend.herokuapp.com/songs/${
         this.state.song._id
@@ -97,7 +97,7 @@ class Songs extends Component {
   }
 
   popBottomComment(event) {
-    console.log(event);
+    event.preventDefault();
     axios.delete(
       `http://konjomusicbackend.herokuapp.com/songs/${
         this.state.song._id
@@ -118,7 +118,7 @@ class Songs extends Component {
   }
 
   handleSubmit(event) {
-    console.log(event);
+    event.preventDefault();
     axios
       .put(
         `http://konjomusicbackend.herokuapp.com/songs/${
