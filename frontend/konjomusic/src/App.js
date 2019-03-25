@@ -158,6 +158,7 @@ class App extends Component {
                   {...props}
                   songs={this.state.songs}
                   isLoggedIn={this.state.isLoggedIn}
+                  getSongs={this.getSongs}
                 />
               )}
             />

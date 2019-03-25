@@ -18,8 +18,21 @@ class Songs extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleComment = this.handleComment.bind(this);
+    this.getSong = this.getSong.bind(this);
   }
   componentDidMount() {
+    fetch(
+      `http://konjomusicbackend.herokuapp.com/songs/${
+        this.props.match.params.id
+      }`
+    )
+      .then(res => res.json())
+      .then(res => {
+        this.setState({ song: res });
+      });
+  }
+
+  getSong() {
     fetch(
       `http://konjomusicbackend.herokuapp.com/songs/${
         this.props.match.params.id
@@ -53,6 +66,7 @@ class Songs extends Component {
       .then(res => {
         this.setState({ song: res });
       });
+    this.props.history.push(`/songs/${this.props.match.params.id}/`);
   }
 
   deleteComment(event) {
@@ -69,41 +83,56 @@ class Songs extends Component {
       .then(response => console.log(response))
       .then(result => {
         console.log(result);
+        this.getSong();
       });
-    this.componentDidMount();
     this.props.history.push(`/songs/${this.props.match.params.id}/`);
   }
 
   deleteAllComments(event) {
     event.preventDefault();
-    axios.delete(
-      `http://konjomusicbackend.herokuapp.com/songs/${
-        this.state.song._id
-      }/clean`
-    );
-    this.componentDidMount();
+    axios
+      .delete(
+        `http://konjomusicbackend.herokuapp.com/songs/${
+          this.state.song._id
+        }/clean`
+      )
+      .then(response => console.log(response))
+      .then(result => {
+        console.log(result);
+        this.getSong();
+      });
     this.props.history.push(`/songs/${this.state.song._id}/`);
   }
 
   popTopComment(event) {
     event.preventDefault();
-    axios.delete(
-      `http://konjomusicbackend.herokuapp.com/songs/${
-        this.state.song._id
-      }/poptop`
-    );
-    this.componentDidMount();
+    axios
+      .delete(
+        `http://konjomusicbackend.herokuapp.com/songs/${
+          this.state.song._id
+        }/poptop`
+      )
+      .then(response => console.log(response))
+      .then(result => {
+        console.log(result);
+        this.getSong();
+      });
     this.props.history.push(`/songs/${this.state.song._id}/`);
   }
 
   popBottomComment(event) {
     event.preventDefault();
-    axios.delete(
-      `http://konjomusicbackend.herokuapp.com/songs/${
-        this.state.song._id
-      }/popbottom`
-    );
-    this.componentDidMount();
+    axios
+      .delete(
+        `http://konjomusicbackend.herokuapp.com/songs/${
+          this.state.song._id
+        }/popbottom`
+      )
+      .then(response => console.log(response))
+      .then(result => {
+        console.log(result);
+        this.getSong();
+      });
     this.props.history.push(`/songs/${this.state.song._id}/`);
   }
 
@@ -131,8 +160,8 @@ class Songs extends Component {
       .then(response => console.log(response))
       .then(result => {
         console.log(result);
+        this.getSong();
       });
-    this.componentDidMount();
     this.props.history.push(`/songs/${this.state.song._id}/`);
   }
 
