@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import backendUrl from "./Url";
 
 class Songs extends Component {
   constructor(props) {
@@ -21,11 +22,7 @@ class Songs extends Component {
     this.getSong = this.getSong.bind(this);
   }
   componentDidMount() {
-    fetch(
-      `http://konjomusicbackend.herokuapp.com/songs/${
-        this.props.match.params.id
-      }`
-    )
+    fetch(backendUrl + `songs/${this.props.match.params.id}`)
       .then(res => res.json())
       .then(res => {
         this.setState({ song: res });
@@ -33,11 +30,7 @@ class Songs extends Component {
   }
 
   getSong() {
-    fetch(
-      `http://konjomusicbackend.herokuapp.com/songs/${
-        this.props.match.params.id
-      }`
-    )
+    fetch(backendUrl + `songs/${this.props.match.params.id}`)
       .then(res => res.json())
       .then(res => {
         this.setState({ song: res });
@@ -46,22 +39,15 @@ class Songs extends Component {
 
   deleteSong(event) {
     event.preventDefault();
-    fetch(
-      `http://konjomusicbackend.herokuapp.com/songs/${this.state.song._id}`,
-      {
-        method: "DELETE"
-      }
-    )
+    fetch(backendUrl + `songs/${this.state.song._id}`, {
+      method: "DELETE"
+    })
       .then(this.props.history.push("/songs"))
       .finally(() => this.props.getSongs());
   }
 
   handleComment() {
-    fetch(
-      `http://konjomusicbackend.herokuapp.com/songs/${
-        this.props.match.params.id
-      }`
-    )
+    fetch(backendUrl + `songs/${this.props.match.params.id}`)
       .then(res => res.json())
       .then(res => {
         this.setState({ song: res });
@@ -72,14 +58,9 @@ class Songs extends Component {
   deleteComment(event) {
     event.preventDefault();
     axios
-      .put(
-        `http://konjomusicbackend.herokuapp.com/songs/${
-          this.state.song._id
-        }/delete`,
-        {
-          body: event.target.dataset.id
-        }
-      )
+      .put(backendUrl + `songs/${this.state.song._id}/delete`, {
+        body: event.target.dataset.id
+      })
       .then(response => console.log(response))
       .then(result => {
         console.log(result);
@@ -91,11 +72,7 @@ class Songs extends Component {
   deleteAllComments(event) {
     event.preventDefault();
     axios
-      .delete(
-        `http://konjomusicbackend.herokuapp.com/songs/${
-          this.state.song._id
-        }/clean`
-      )
+      .delete(backendUrl + `songs/${this.state.song._id}/clean`)
       .then(response => console.log(response))
       .then(result => {
         console.log(result);
@@ -107,11 +84,7 @@ class Songs extends Component {
   popTopComment(event) {
     event.preventDefault();
     axios
-      .delete(
-        `http://konjomusicbackend.herokuapp.com/songs/${
-          this.state.song._id
-        }/poptop`
-      )
+      .delete(backendUrl + `songs/${this.state.song._id}/poptop`)
       .then(response => console.log(response))
       .then(result => {
         console.log(result);
@@ -123,11 +96,7 @@ class Songs extends Component {
   popBottomComment(event) {
     event.preventDefault();
     axios
-      .delete(
-        `http://konjomusicbackend.herokuapp.com/songs/${
-          this.state.song._id
-        }/popbottom`
-      )
+      .delete(backendUrl + `songs/${this.state.song._id}/popbottom`)
       .then(response => console.log(response))
       .then(result => {
         console.log(result);
@@ -149,14 +118,9 @@ class Songs extends Component {
   handleSubmit(event) {
     event.preventDefault();
     axios
-      .put(
-        `http://konjomusicbackend.herokuapp.com/songs/${
-          this.props.match.params.id
-        }/comment`,
-        {
-          comment: this.state.comment
-        }
-      )
+      .put(backendUrl + `songs/${this.props.match.params.id}/comment`, {
+        comment: this.state.comment
+      })
       .then(response => console.log(response))
       .then(result => {
         console.log(result);

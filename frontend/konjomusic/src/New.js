@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import backendUrl from "./Url";
 
 class New extends Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class New extends Component {
     event.preventDefault();
     const data = this.state;
     console.log(event);
-    fetch("http://konjomusicbackend.herokuapp.com/songs", {
+    fetch(backendUrl + "songs", {
       method: "POST",
       headers: {
         "Content-type": "application/json"

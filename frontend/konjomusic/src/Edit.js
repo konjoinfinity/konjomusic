@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import backendUrl from "./Url";
 
 class Edit extends Component {
   constructor(props) {
@@ -14,11 +15,7 @@ class Edit extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount() {
-    fetch(
-      `http://konjomusicbackend.herokuapp.com/songs/${
-        this.props.match.params.id
-      }`
-    )
+    fetch(backendUrl + `songs/${this.props.match.params.id}`)
       .then(res => res.json())
       .then(res => {
         this.setState({ song: res });
@@ -38,18 +35,13 @@ class Edit extends Component {
   handleSubmit(event) {
     event.preventDefault();
     const data = this.state;
-    fetch(
-      `http://konjomusicbackend.herokuapp.com/songs/${
-        this.props.match.params.id
-      }`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-type": "application/json"
-        },
-        body: JSON.stringify(data)
-      }
-    )
+    fetch(backendUrl + `songs/${this.props.match.params.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify(data)
+    })
       .then(response => response.json())
       .then(result => {
         this.props.history.push(`/songs/${this.props.match.params.id}`);

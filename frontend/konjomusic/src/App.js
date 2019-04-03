@@ -11,6 +11,7 @@ import New from "./New";
 import SignUpForm from "./SignUpForm";
 import LogInForm from "./LogInForm";
 import LogOut from "./LogOut";
+import backendUrl from "./Url";
 
 class App extends Component {
   constructor(props) {
@@ -30,7 +31,7 @@ class App extends Component {
   }
 
   getSongs() {
-    fetch("http://konjomusicbackend.herokuapp.com/songs")
+    fetch(backendUrl + "songs")
       .then(res => res.json())
       .then(res => {
         this.setState({ songs: res });
@@ -71,7 +72,7 @@ class App extends Component {
   handleSignUp(e) {
     e.preventDefault();
     axios
-      .post("http://konjomusicbackend.herokuapp.com/users/signup", {
+      .post(backendUrl + "users/signup", {
         email: this.state.email,
         password: this.state.password
       })
@@ -87,7 +88,7 @@ class App extends Component {
   handleLogIn(e) {
     e.preventDefault();
     axios
-      .post("http://konjomusicbackend.herokuapp.com/users/login", {
+      .post(backendUrl + "users/login", {
         email: this.state.email,
         password: this.state.password
       })
@@ -147,6 +148,7 @@ class App extends Component {
                   {...props}
                   songs={this.state.songs}
                   isLoggedIn={this.state.isLoggedIn}
+                  getSongs={this.getSongs}
                 />
               )}
             />
@@ -234,7 +236,6 @@ class App extends Component {
                 );
               }}
             />
-            {/* <Route path="/*" component={ErrorPage} /> */}
           </Switch>
         </main>
       </div>
