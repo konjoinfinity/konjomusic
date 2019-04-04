@@ -78,16 +78,16 @@ class New extends Component {
                 />
               </p>
               <p>Lyrics </p>
-              <p>
-                <textarea
-                  id="lyrics"
-                  name="lyrics"
-                  type="text"
-                  rows="8"
-                  cols="48"
-                  onChange={this.handleInputChange}
-                />
-              </p>
+              <div className="ui-field-contain">
+                <p>
+                  <textarea
+                    id="lyrics"
+                    name="lyrics"
+                    type="text"
+                    onChange={this.handleInputChange}
+                  />
+                </p>
+              </div>
               <p>
                 <button className="btn btn-success">Create Song</button>
               </p>

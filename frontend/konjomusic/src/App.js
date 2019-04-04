@@ -104,39 +104,95 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <nav>
-          <img src="https://konjoinfinity.github.io/img/logo.png" alt="Konjo" />
-
-          {this.state.isLoggedIn === true && (
-            <Link to="/songs">
-              <h4>Home</h4>
-            </Link>
-          )}
-          {this.state.isLoggedIn === true && (
-            <Link to="/about">
-              <h4>About</h4>
-            </Link>
-          )}
-          {this.state.isLoggedIn === true && (
-            <Link to="/new">
-              <h4>New</h4>
-            </Link>
-          )}
-          {this.state.isLoggedIn === false && (
-            <Link to="/login">
-              <h4>Login</h4>
-            </Link>
-          )}
-          {this.state.isLoggedIn === false && (
-            <Link to="/signup">
-              <h4>Sign Up</h4>
-            </Link>
-          )}
-          {this.state.isLoggedIn === true && (
-            <Link to="/logout">
-              <h4>Logout</h4>
-            </Link>
-          )}
+        <nav className="navbar navbar-expand-lg navbar-light bg-success">
+          <a className="navbar-brand" href="/">
+            <img
+              src="https://konjoinfinity.github.io/img/logo.png"
+              alt="Konjo"
+            />
+          </a>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarText"
+            aria-controls="navbarText"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon" />
+          </button>
+          <div className="collapse navbar-collapse" id="navbarText">
+            <ul className="navbar-nav mr-auto">
+              <li
+                className="nav-item active"
+                data-toggle="collapse"
+                data-target=".navbar-collapse.show"
+              >
+                {this.state.isLoggedIn === true && (
+                  <Link to="/songs">
+                    <h4>Home</h4>
+                  </Link>
+                )}
+              </li>
+              <li
+                className="nav-item"
+                data-toggle="collapse"
+                data-target=".navbar-collapse.show"
+              >
+                {this.state.isLoggedIn === true && (
+                  <Link to="/about">
+                    <h4>About</h4>
+                  </Link>
+                )}
+              </li>
+              <li
+                className="nav-item"
+                data-toggle="collapse"
+                data-target=".navbar-collapse.show"
+              >
+                {this.state.isLoggedIn === true && (
+                  <Link to="/new">
+                    <h4>New</h4>
+                  </Link>
+                )}
+              </li>
+              <li
+                className="nav-item"
+                data-toggle="collapse"
+                data-target=".navbar-collapse.show"
+              >
+                {this.state.isLoggedIn === false && (
+                  <Link to="/login">
+                    <h4>Login</h4>
+                  </Link>
+                )}
+              </li>
+              <li
+                className="nav-item"
+                data-toggle="collapse"
+                data-target=".navbar-collapse.show"
+              >
+                {this.state.isLoggedIn === false && (
+                  <Link to="/signup">
+                    <h4>Sign Up</h4>
+                  </Link>
+                )}
+              </li>
+              <li
+                className="nav-item"
+                data-toggle="collapse"
+                data-target=".navbar-collapse.show"
+              >
+                {this.state.isLoggedIn === true && (
+                  <Link to="/logout">
+                    <h4>Logout</h4>
+                  </Link>
+                )}
+              </li>
+            </ul>
+            <span className="navbar-text">Konjo Music</span>
+          </div>
         </nav>
         <main className="container">
           <Switch>

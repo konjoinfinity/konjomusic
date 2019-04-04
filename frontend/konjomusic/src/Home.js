@@ -73,13 +73,23 @@ class Home extends Component {
                 </Link>
               </p>
               <p>Votes: {song.votes}</p>
-              <p>
-                <form data-id={song._id} onSubmit={this.upVote}>
-                  <button className="btn btn-primary">Upvote ⬆️</button>
-                </form>
-              </p>
+
+              <form data-id={song._id} onSubmit={this.upVote}>
+                <button className="btn btn-primary m-1">
+                  Upvote{" "}
+                  <span role="img" aria-label="up">
+                    ⬆️
+                  </span>
+                </button>
+              </form>
+
               <form data-id={song._id} onSubmit={this.downVote}>
-                <button className="btn btn-warning">Downvote ⬇️</button>
+                <button className="btn btn-warning m-1">
+                  Downvote{" "}
+                  <span role="img" aria-label="up">
+                    ⬇️
+                  </span>
+                </button>
               </form>
             </div>
           </div>
