@@ -152,14 +152,17 @@ class Songs extends Component {
           <div className="song card m-5">
             <div className="card-body">
               <form onSubmit={this.handleSubmit}>
-                <p>
-                  <input
-                    id="comment"
-                    name="comment"
-                    type="text"
-                    onChange={this.handleInputChange}
-                  />
-                </p>
+                <div className="form-group">
+                  <p>
+                    <input
+                      className="form-control"
+                      id="comment"
+                      name="comment"
+                      type="text"
+                      onChange={this.handleInputChange}
+                    />
+                  </p>
+                </div>
                 <p>
                   <button className="btn btn-primary">Comment</button>
                 </p>

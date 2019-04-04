@@ -57,47 +57,58 @@ class Edit extends Component {
           <div className="card-body">
             <h1>Edit Song</h1>
             <form onSubmit={this.handleSubmit} action="/songs">
-              <p>Title </p>
-              <p>
-                <input
-                  id="title"
-                  name="title"
-                  type="text"
-                  defaultValue={this.state.song && this.state.song.title}
-                  onChange={this.handleInputChange}
-                />
-              </p>
-              <p>Author </p>
-              <p>
-                <input
-                  id="author"
-                  name="author"
-                  type="text"
-                  defaultValue={this.state.song && this.state.song.author}
-                  onChange={this.handleInputChange}
-                />
-              </p>
-              <p>Notes </p>
-              <p>
-                <input
-                  id="notes"
-                  name="notes"
-                  type="text"
-                  defaultValue={this.state.song && this.state.song.notes}
-                  onChange={this.handleInputChange}
-                />
-              </p>
-              <p>Lyrics </p>
-              <p>
-                <textarea
-                  id="lyrics"
-                  name="lyrics"
-                  type="text"
-                  rows="10"
-                  placeholder={this.state.song && this.state.song.lyrics}
-                  onChange={this.handleInputChange}
-                />
-              </p>
+              <div className="form-group">
+                <label>Title</label>
+                <p>
+                  <input
+                    className="form-control"
+                    id="title"
+                    name="title"
+                    type="text"
+                    defaultValue={this.state.song && this.state.song.title}
+                    onChange={this.handleInputChange}
+                  />
+                </p>
+              </div>
+              <div className="form-group">
+                <label>Author</label>
+                <p>
+                  <input
+                    className="form-control"
+                    id="author"
+                    name="author"
+                    type="text"
+                    defaultValue={this.state.song && this.state.song.author}
+                    onChange={this.handleInputChange}
+                  />
+                </p>
+              </div>
+              <div className="form-group">
+                <label>Notes</label>
+                <p>
+                  <input
+                    className="form-control"
+                    id="notes"
+                    name="notes"
+                    type="text"
+                    defaultValue={this.state.song && this.state.song.notes}
+                    onChange={this.handleInputChange}
+                  />
+                </p>
+              </div>
+              <div className="form-group">
+                <label>Lyrics</label>
+                <p>
+                  <textarea
+                    className="form-control"
+                    id="lyrics"
+                    name="lyrics"
+                    type="text"
+                    placeholder={this.state.song && this.state.song.lyrics}
+                    onChange={this.handleInputChange}
+                  />
+                </p>
+              </div>
               <p>
                 <button className="btn btn-primary">Edit Song</button>
               </p>

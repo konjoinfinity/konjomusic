@@ -73,7 +73,6 @@ class Home extends Component {
                 </Link>
               </p>
               <p>Votes: {song.votes}</p>
-
               <form data-id={song._id} onSubmit={this.upVote}>
                 <button className="btn btn-primary m-1">
                   Upvote{" "}
@@ -82,7 +81,6 @@ class Home extends Component {
                   </span>
                 </button>
               </form>
-
               <form data-id={song._id} onSubmit={this.downVote}>
                 <button className="btn btn-warning m-1">
                   Downvote{" "}

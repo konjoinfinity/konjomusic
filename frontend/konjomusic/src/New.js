@@ -50,37 +50,47 @@ class New extends Component {
           <div className="card-body">
             <h1>Create New Song</h1>
             <form onSubmit={this.handleSubmit} action="/songs">
-              <p>Title </p>
-              <p>
-                <input
-                  id="title"
-                  name="title"
-                  type="text"
-                  onChange={this.handleInputChange}
-                />
-              </p>
-              <p>Author </p>
-              <p>
-                <input
-                  id="author"
-                  name="author"
-                  type="text"
-                  onChange={this.handleInputChange}
-                />
-              </p>
-              <p>Notes </p>
-              <p>
-                <input
-                  id="notes"
-                  name="notes"
-                  type="text"
-                  onChange={this.handleInputChange}
-                />
-              </p>
-              <p>Lyrics </p>
-              <div className="ui-field-contain">
+              <div className="form-group">
+                <label>Title</label>
+                <p>
+                  <input
+                    className="form-control"
+                    id="title"
+                    name="title"
+                    type="text"
+                    onChange={this.handleInputChange}
+                  />
+                </p>
+              </div>
+              <div className="form-group">
+                <label>Author</label>
+                <p>
+                  <input
+                    className="form-control"
+                    id="author"
+                    name="author"
+                    type="text"
+                    onChange={this.handleInputChange}
+                  />
+                </p>
+              </div>
+              <div className="form-group">
+                <label>Notes</label>
+                <p>
+                  <input
+                    className="form-control"
+                    id="notes"
+                    name="notes"
+                    type="text"
+                    onChange={this.handleInputChange}
+                  />
+                </p>
+              </div>
+              <div className="form-group">
+                <label>Lyrics</label>
                 <p>
                   <textarea
+                    className="form-control"
                     id="lyrics"
                     name="lyrics"
                     type="text"
