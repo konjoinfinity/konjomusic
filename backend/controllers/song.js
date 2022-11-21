@@ -4,7 +4,9 @@ const mongoose = require("../db/connection");
 const Song = require("../models/song");
 
 router.get("/", function(req, res) {
-  Song.find({}).then(song => res.json(song));
+  Song.find({})
+    .sort({ votes: -1 })
+    .then(song => res.json(song));
 });
 
 router.post("/", (req, res) => {
@@ -16,6 +18,7 @@ router.get("/:id", (req, res) => {
 });
 
 router.put("/:id", (req, res) => {
+  console.log(req.params.id);
   Song.findOne({
     _id: req.params.id
   }).then(song => {
@@ -30,7 +33,7 @@ router.put("/:id", (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
-  Song.findOneAndRemove({ _id: req.params.id }).then(konjo =>
+  Song.findOneAndDelete({ _id: req.params.id }).then(konjo =>
     res.json("/songs")
   );
 });
@@ -39,6 +42,7 @@ router.put("/:id/comment", (req, res) => {
   const createComment = {
     text: req.body.comment
   };
+  console.log(createComment);
   Song.findOneAndUpdate(
     { _id: req.params.id },
     { $push: { comments: createComment } }
@@ -51,6 +55,7 @@ router.put("/:id/comment", (req, res) => {
 
 router.put("/:id/delete", (req, res) => {
   const deleteComment = { _id: req.body.body };
+  console.log(deleteComment);
   Song.findOneAndUpdate(
     { _id: req.params.id },
     { $pull: { comments: deleteComment } }
@@ -61,7 +66,7 @@ router.put("/:id/delete", (req, res) => {
   });
 });
 
-router.delete("/:id/comdel", (req, res) => {
+router.delete("/:id/clean", (req, res) => {
   // console.log(req.body);
   Song.findOneAndUpdate(
     { _id: req.params.id },
@@ -71,6 +76,29 @@ router.delete("/:id/comdel", (req, res) => {
       res.json(song);
     });
   });
+});
+
+router.delete("/:id/poptop", (req, res) => {
+  // console.log(req.body);
+  Song.findOneAndUpdate(
+    { _id: req.params.id },
+    { $pop: { comments: -1 } }
+  ).then(song => {
+    song.save((err, song) => {
+      res.json(song);
+    });
+  });
+});
+
+router.delete("/:id/popbottom", (req, res) => {
+  // console.log(req.body);
+  Song.findOneAndUpdate({ _id: req.params.id }, { $pop: { comments: 1 } }).then(
+    song => {
+      song.save((err, song) => {
+        res.json(song);
+      });
+    }
+  );
 });
 
 module.exports = router;

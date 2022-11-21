@@ -10,6 +10,10 @@ const Song = new Schema({
   author: String,
   notes: String,
   lyrics: String,
+  votes: {
+    type: Number,
+    default: 0
+  },
   comments: [Comment]
 });
 

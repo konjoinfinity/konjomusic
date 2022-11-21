@@ -41,7 +41,10 @@ router.post("/login", (req, res) => {
   if (req.body.email && req.body.password) {
     User.findOne({ email: req.body.email }).then(user => {
       if (user) {
-        if (user.password === req.body.password) {
+        let success = user.comparePassword(req.body.password, user.password);
+        console.log(success);
+        if (success === true) {
+          console.log("Successful Login");
           var payload = {
             id: user.id
           };
@@ -50,6 +53,7 @@ router.post("/login", (req, res) => {
             token: token
           });
         } else {
+          console.log("Failed Login");
           res.sendStatus(401);
         }
       } else {

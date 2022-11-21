@@ -18,7 +18,12 @@ class Edit extends Component {
     fetch(backendUrl + `songs/${this.props.match.params.id}`)
       .then(res => res.json())
       .then(res => {
-        this.setState({ song: res });
+        console.log(res)
+        this.setState({ 
+          title: res.title,
+        author: res.author,
+      notes: res.notes,
+    lyrics: res.lyrics });
       });
   }
 
@@ -33,6 +38,7 @@ class Edit extends Component {
   }
 
   handleSubmit(event) {
+    console.log(this.state);
     event.preventDefault();
     const data = this.state;
     fetch(backendUrl + `songs/${this.props.match.params.id}`, {
@@ -65,7 +71,7 @@ class Edit extends Component {
                     id="title"
                     name="title"
                     type="text"
-                    defaultValue={this.state.song && this.state.song.title}
+                    defaultValue={this.state ? this.state.title : ""}
                     onChange={this.handleInputChange}
                   />
                 </p>
@@ -78,7 +84,7 @@ class Edit extends Component {
                     id="author"
                     name="author"
                     type="text"
-                    defaultValue={this.state.song && this.state.song.author}
+                    defaultValue={this.state ? this.state.author : ""}
                     onChange={this.handleInputChange}
                   />
                 </p>
@@ -91,7 +97,7 @@ class Edit extends Component {
                     id="notes"
                     name="notes"
                     type="text"
-                    defaultValue={this.state.song && this.state.song.notes}
+                    defaultValue={this.state ? this.state.notes : ""}
                     onChange={this.handleInputChange}
                   />
                 </p>
@@ -104,7 +110,7 @@ class Edit extends Component {
                     id="lyrics"
                     name="lyrics"
                     type="text"
-                    placeholder={this.state.song && this.state.song.lyrics}
+                    placeholder={this.state ? this.state.lyrics : ""}
                     onChange={this.handleInputChange}
                   />
                 </p>
