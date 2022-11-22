@@ -6,17 +6,23 @@ if (process.env.NODE_ENV == "production") {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
-    useCreateIndex: true
-  });
-  console.log("Production Database Connection Successful");
+    useCreateIndex: true,
+    family: 4
+  }, function(err) {
+    if (err) {throw err;
+    } else {console.log("Production Database Connection Successful");}
+    })
 } else {
   mongoose.connect("mongodb://localhost/konjomusic", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
-    useCreateIndex: true
-  });
-  console.log("Development Database Connection Successful");
+    useCreateIndex: true,
+    family: 4
+  }, function(err) {
+    if (err) {throw err;
+    } else {console.log("Development Database Connection Successful")}
+    });
 }
 
 module.exports = mongoose;
